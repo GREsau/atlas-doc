@@ -2,7 +2,7 @@ import test from 'tape-catch'
 import { doc, paragraph, strong } from '../src/index'
 
 test('Document # Different item types', t => {
-  const list = doc('plain', strong('formatted'), paragraph('paragraph'))
+  const node = doc('plain', strong('formatted'), paragraph('paragraph'))
 
   const expected = {
     'version': 1,
@@ -43,12 +43,12 @@ test('Document # Different item types', t => {
     ]
   }
 
-  t.deepEqual(list, expected)
+  t.deepEqual(node, expected)
   t.end()
 })
 
 test('Document # Can be empty', t => {
-  const list = doc()
+  const node = doc()
 
   const expected = {
     'version': 1,
@@ -61,6 +61,6 @@ test('Document # Can be empty', t => {
     ]
   }
 
-  t.deepEqual(list, expected)
+  t.deepEqual(node, expected)
   t.end()
 })
