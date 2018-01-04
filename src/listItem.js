@@ -1,10 +1,10 @@
-import { asTopLevelNode } from './topLevelNodeUtils'
+import { asBlockNode } from './blockNodeUtils'
 
 export default function listItem (...content) {
   // TODO can listItem be empty?
   return {
     type: 'listItem',
-    content: content.map(asTopLevelNode)
+    content: content.map(asBlockNode)
   }
 }
 
