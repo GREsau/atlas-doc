@@ -1,38 +1,5 @@
-
 import DocFormatError from './DocFormatError'
-
-export function hardBreak () {
-  return { type: 'hardBreak' }
-}
-
-export function emoji (shortName, altText = null) {
-  if (!/^:.*:$/.test(shortName)) {
-    shortName = `:${shortName}:`
-  }
-  return {
-    type: 'emoji',
-    attrs: altText ? { shortName, text: altText } : { shortName }
-  }
-}
-
-export function mention (userId) {
-  return {
-    type: 'mention',
-    attrs: {
-      id: userId
-    }
-  }
-}
-
-export function text (content) {
-  if (typeof content === 'string') {
-    return { type: 'text', text: content }
-  }
-  if (content && content.type === 'text') {
-    return content
-  }
-  throw new DocFormatError(`Expected string or text node, but found: ${JSON.stringify(content)}`)
-}
+import text from './text'
 
 export function code (content) {
   return markedText(content, 'code')
@@ -78,19 +45,4 @@ function markedText (content, type, attrs = null) {
   const mark = attrs ? { type, attrs } : { type }
   const marks = textNode.marks ? textNode.marks.concat(mark) : [mark]
   return Object.assign({}, textNode, { marks })
-}
-
-const inlineNodeTypes = ['emoji', 'hardBreak', 'mention', 'text']
-export function isInlineNode (node) {
-  return node && inlineNodeTypes.indexOf(node.type) > -1
-}
-
-export function inlineNode (item) {
-  if (typeof item === 'string') {
-    return text(item)
-  }
-  if (isInlineNode(item)) {
-    return item
-  }
-  throw new DocFormatError(`Expected string or inline node, but found: ${JSON.stringify(item)}`)
 }

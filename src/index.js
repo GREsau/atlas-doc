@@ -1,12 +1,9 @@
-import { topLevelNode, paragraph } from './topLevelNodes'
-export { paragraph, bulletList } from './topLevelNodes'
-export { code, color, emoji, emphasis, hardBreak, link, mention, strike, strong, subscript, superscript, text, underline } from './inlineNodes'
+export { default as paragraph } from './paragraph'
+export { default as bulletList } from './bulletList'
+export { code, color, emphasis, link, strike, strong, subscript, superscript, underline } from './markedText'
+export { default as text } from './text'
+export { default as emoji } from './emoji'
+export { default as hardBreak } from './hardBreak'
+export { default as mention } from './mention'
+export { default as doc } from './doc'
 export { default as DocFormatError } from './DocFormatError'
-
-export function doc (...content) {
-  return {
-    version: 1,
-    type: 'doc',
-    content: content.length ? content.map(topLevelNode) : [paragraph()]
-  }
-}
