@@ -1,6 +1,6 @@
 import { topLevelNode, paragraph } from './topLevelNodes'
 export { paragraph, bulletList } from './topLevelNodes'
-export { code, color, emphasis, link, strike, strong, subscript, superscript, text, underline } from './inlineNodes'
+export { code, color, emphasis, hardBreak, link, strike, strong, subscript, superscript, text, underline } from './inlineNodes'
 export { default as DocFormatError } from './DocFormatError'
 
 export function doc (...content) {

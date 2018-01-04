@@ -6,6 +6,7 @@
   "files": [
     "dist"
   ],
+  "engines":  { "node" : ">=4.0.0" },
   "scripts": {
     "lint": "standard --verbose src/**/*.js | snazzy",
     "test": "tape -r babel-register test/**/*.js | tap-spec",

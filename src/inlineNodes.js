@@ -1,11 +1,15 @@
 
 import DocFormatError from './DocFormatError'
 
+export function hardBreak () {
+  return { type: 'hardBreak' }
+}
+
 export function text (content) {
   if (typeof content === 'string') {
     return { type: 'text', text: content }
   }
-  if (content.type === 'text') {
+  if (content && content.type === 'text') {
     return content
   }
   throw new DocFormatError(`Expected string or text node, but found: ${JSON.stringify(content)}`)
@@ -40,10 +44,10 @@ export function subscript (content) {
 }
 
 export function color (content, color) {
-  if (!/^#[0-9a-f]{6}$/.test(color)) {
+  if (!/^#[0-9a-f]{6}$/i.test(color)) {
     throw new DocFormatError(`Invalid text color '${color}'`)
   }
-  return markedText(content, 'textColor', { color })
+  return markedText(content, 'textColor', { color: color.toLowerCase() })
 }
 
 export function link (content, url) {
