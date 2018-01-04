@@ -5,6 +5,25 @@ export function hardBreak () {
   return { type: 'hardBreak' }
 }
 
+export function emoji (shortName, altText = null) {
+  if (!/^:.*:$/.test(shortName)) {
+    shortName = `:${shortName}:`
+  }
+  return {
+    type: 'emoji',
+    attrs: altText ? { shortName, text: altText } : { shortName }
+  }
+}
+
+export function mention (userId) {
+  return {
+    type: 'mention',
+    attrs: {
+      id: userId
+    }
+  }
+}
+
 export function text (content) {
   if (typeof content === 'string') {
     return { type: 'text', text: content }
@@ -45,7 +64,7 @@ export function subscript (content) {
 
 export function color (content, color) {
   if (!/^#[0-9a-f]{6}$/i.test(color)) {
-    throw new DocFormatError(`Invalid text color '${color}'`)
+    throw new DocFormatError(`Invalid text color '${color}' - must be 6-character hex code with leading #`)
   }
   return markedText(content, 'textColor', { color: color.toLowerCase() })
 }
