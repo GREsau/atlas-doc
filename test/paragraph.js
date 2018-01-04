@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'tape-catch'
 import { paragraph, strong, DocFormatError } from '../src/index'
 
 test('Paragraph # Different item types', t => {

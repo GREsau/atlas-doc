@@ -2,11 +2,11 @@
 export default function DocFormatError (message, ...rest) {
   Error.call(this, message, ...rest)
 
+  this.message = message
+
   if (Error.captureStackTrace) {
     Error.captureStackTrace(this, DocFormatError)
   }
-
-  this.message = message
 }
 
 DocFormatError.prototype = Object.create(Error.prototype)

@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'tape-catch'
 import { code, color, emphasis, link, strike, strong, subscript, superscript, text, underline, DocFormatError, paragraph, hardBreak } from '../src/index'
 
 test('Text # plain text', t => {

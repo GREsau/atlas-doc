@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'tape-catch'
 import { doc, paragraph, strong } from '../src/index'
 
 test('Document # Different item types', t => {

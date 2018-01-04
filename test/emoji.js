@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'tape-catch'
 import { emoji } from '../src/index'
 
 test('Emoji # With colons', t => {

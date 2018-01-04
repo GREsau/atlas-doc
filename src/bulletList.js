@@ -1,5 +1,5 @@
 import DocFormatError from './DocFormatError'
-import { asTopLevelNode } from './topLevelNodeUtils'
+import { asListItem } from './listItem'
 
 export default function bulletList (...content) {
   if (content.length === 0) {
@@ -7,9 +7,6 @@ export default function bulletList (...content) {
   }
   return {
     type: 'bulletList',
-    content: content.map(item => ({
-      type: 'listItem',
-      content: Array.isArray(item) ? item.map(asTopLevelNode) : [asTopLevelNode(item)]
-    }))
+    content: content.map(asListItem)
   }
 }

@@ -1,4 +1,4 @@
-import test from 'tape'
+import test from 'tape-catch'
 import { hardBreak } from '../src/index'
 
 test('Hard Break', t => {

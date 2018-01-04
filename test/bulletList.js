@@ -1,8 +1,8 @@
-import test from 'tape'
-import { bulletList, paragraph, strong, DocFormatError } from '../src/index'
+import test from 'tape-catch'
+import { bulletList, listItem, paragraph, strong, DocFormatError } from '../src/index'
 
 test('Bullet List # Different item types', t => {
-  const list = bulletList('plain', strong('formatted'), paragraph('paragraph'), ['array 1', 'array 2'])
+  const list = bulletList('plain', strong('formatted'), paragraph('paragraph'), listItem('double 1', strong('double 2'), paragraph('double 3')))
 
   const expected = {
     'type': 'bulletList',
@@ -62,7 +62,7 @@ test('Bullet List # Different item types', t => {
             'content': [
               {
                 'type': 'text',
-                'text': 'array 1'
+                'text': 'double 1'
               }
             ]
           },
@@ -71,7 +71,21 @@ test('Bullet List # Different item types', t => {
             'content': [
               {
                 'type': 'text',
-                'text': 'array 2'
+                'text': 'double 2',
+                'marks': [
+                  {
+                    'type': 'strong'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            'type': 'paragraph',
+            'content': [
+              {
+                'type': 'text',
+                'text': 'double 3'
               }
             ]
           }
@@ -85,7 +99,7 @@ test('Bullet List # Different item types', t => {
 })
 
 test('Bullet List # Can be nested', t => {
-  const list = bulletList('1A', ['1B', bulletList(['2A', bulletList('3A', '3B')])])
+  const list = bulletList('1A', listItem('1B', bulletList(listItem('2A', bulletList('3A', '3B')))))
 
   const expected = {
     'type': 'bulletList',

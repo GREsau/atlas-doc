@@ -1,5 +1,6 @@
 export { default as paragraph } from './paragraph'
 export { default as bulletList } from './bulletList'
+export { default as listItem } from './listItem'
 export { code, color, emphasis, link, strike, strong, subscript, superscript, underline } from './markedText'
 export { default as text } from './text'
 export { default as emoji } from './emoji'
