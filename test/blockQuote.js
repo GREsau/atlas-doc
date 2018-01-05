@@ -1,11 +1,11 @@
 import test from 'tape-catch'
-import { blockQuote, paragraph, strong, media } from '../src/index'
+import { blockquote, paragraph, strong, media } from '../src/index'
 
 test('Block Quote # Different item types', t => {
-  const node = blockQuote('the', strong('first'), 'paragraph', paragraph('the second paragraph'), paragraph('the third paragraph'), media('media1', 'collection'), media('media2', 'collection'))
+  const node = blockquote('the', strong('first'), 'paragraph', paragraph('the second paragraph'), paragraph('the third paragraph'), media('media1', 'collection'), media('media2', 'collection'))
 
   const expected = {
-    'type': 'blockQuote',
+    'type': 'blockquote',
     'content': [
       {
         'type': 'paragraph',

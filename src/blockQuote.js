@@ -1,9 +1,9 @@
 import { asBlockNodesWithMerging } from './blockNodeUtils'
 
-export default function blockQuote (...content) {
-  // TODO can blockQuote be empty?
+export default function blockquote (...content) {
+  // TODO can blockquote be empty? No!
   return {
-    type: 'blockQuote',
+    type: 'blockquote',
     content: asBlockNodesWithMerging(content)
   }
 }

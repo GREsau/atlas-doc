@@ -1,5 +1,5 @@
 export { default as paragraph } from './paragraph'
-export { default as blockQuote } from './blockQuote'
+export { default as blockquote } from './blockquote'
 export { default as bulletList } from './bulletList'
 export { default as orderedList } from './orderedList'
 export { default as listItem } from './listItem'

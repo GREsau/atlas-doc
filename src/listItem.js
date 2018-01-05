@@ -1,7 +1,7 @@
 import { asBlockNode } from './blockNodeUtils'
 
 export default function listItem (...content) {
-  // TODO can listItem be empty?
+  // TODO can listItem be empty? No!
   return {
     type: 'listItem',
     content: content.map(asBlockNode)
