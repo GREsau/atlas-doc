@@ -1,4 +1,5 @@
 export { default as paragraph } from './paragraph'
+export { default as codeBlock } from './codeBlock'
 export { default as blockquote } from './blockquote'
 export { default as bulletList } from './bulletList'
 export { default as orderedList } from './orderedList'
