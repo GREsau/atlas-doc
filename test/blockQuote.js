@@ -74,3 +74,20 @@ test('Block Quote # Different item types', t => {
   t.deepEqual(node, expected)
   t.end()
 })
+
+test('Block Quote # Can be empty', t => {
+  const node = blockquote()
+
+  const expected = {
+    'type': 'blockquote',
+    'content': [
+      {
+        'type': 'paragraph',
+        'content': []
+      }
+    ]
+  }
+
+  t.deepEqual(node, expected)
+  t.end()
+})

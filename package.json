@@ -10,7 +10,7 @@
     "node": ">=4.0.0"
   },
   "scripts": {
-    "lint": "standard --verbose src/**/*.js | snazzy",
+    "lint": "standard --verbose src/**/*.js test/**/*.js | snazzy",
     "test": "tape -r babel-register test/**/*.js | tap-spec",
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
