@@ -9,14 +9,36 @@ export function isBlockNode (node) {
 }
 
 export function asBlockNode (item) {
-  if (typeof item === 'string' || isInlineNode(item)) {
-    return paragraph(item)
+  return asBlockNodesWithMerging([item])[0]
+}
+
+export function asBlockNodesWithMerging (items) {
+  items = [...items]
+  const result = []
+  while (items.length) {
+    const inlines = shiftWhere(items, i => (typeof i === 'string' || isInlineNode(i)))
+    if (inlines.length) {
+      result.push(paragraph(...inlines))
+      continue
+    }
+    const media = shiftWhere(items, i => (i && i.type === 'media'))
+    if (media.length) {
+      result.push(mediaGroup(...media))
+      continue
+    }
+    if (isBlockNode(items[0])) {
+      result.push(items.shift())
+      continue
+    }
+    throw new DocFormatError(`Expected string or node, but found: ${JSON.stringify(items[0])}`)
   }
-  if (item && item.type === 'media') {
-    return mediaGroup(item)
+  return result
+}
+
+function shiftWhere (items, condition) {
+  const result = []
+  while (condition(items[0])) {
+    result.push(items.shift())
   }
-  if (isBlockNode(item)) {
-    return item
-  }
-  throw new DocFormatError(`Expected string or node, but found: ${JSON.stringify(item)}`)
+  return result
 }

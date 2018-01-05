@@ -1,8 +1,8 @@
 import test from 'tape-catch'
-import { doc, paragraph, strong } from '../src/index'
+import { doc, paragraph, strong, media } from '../src/index'
 
 test('Document # Different item types', t => {
-  const node = doc('plain', strong('formatted'), paragraph('paragraph'))
+  const node = doc('the', strong('first'), 'paragraph', paragraph('the second paragraph'), paragraph('the third paragraph'), media('media1', 'collection'), media('media2', 'collection'))
 
   const expected = {
     'version': 1,
@@ -13,21 +13,20 @@ test('Document # Different item types', t => {
         'content': [
           {
             'type': 'text',
-            'text': 'plain'
-          }
-        ]
-      },
-      {
-        'type': 'paragraph',
-        'content': [
+            'text': 'the'
+          },
           {
             'type': 'text',
-            'text': 'formatted',
+            'text': 'first',
             'marks': [
               {
                 'type': 'strong'
               }
             ]
+          },
+          {
+            'type': 'text',
+            'text': 'paragraph'
           }
         ]
       },
@@ -36,7 +35,37 @@ test('Document # Different item types', t => {
         'content': [
           {
             'type': 'text',
-            'text': 'paragraph'
+            'text': 'the second paragraph'
+          }
+        ]
+      },
+      {
+        'type': 'paragraph',
+        'content': [
+          {
+            'type': 'text',
+            'text': 'the third paragraph'
+          }
+        ]
+      },
+      {
+        'type': 'mediaGroup',
+        'content': [
+          {
+            'type': 'media',
+            'attrs': {
+              'type': 'file',
+              'id': 'media1',
+              'collection': 'collection'
+            }
+          },
+          {
+            'type': 'media',
+            'attrs': {
+              'type': 'file',
+              'id': 'media2',
+              'collection': 'collection'
+            }
           }
         ]
       }
@@ -48,6 +77,8 @@ test('Document # Different item types', t => {
 })
 
 test('Document # Can be empty', t => {
+  // TODO Stride documentation suggest that a doc with no content is valid, but
+  // Stride itself doesn't accept this - verify the intended behaviour
   const node = doc()
 
   const expected = {
