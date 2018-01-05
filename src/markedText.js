@@ -40,8 +40,13 @@ export function link (content, url) {
   return markedText(content, 'link', { href: url })
 }
 
-function markedText (content, type, attrs = null) {
-  const textNode = text(content)
+function markedText (textNode, type, attrs = null) {
+  if (typeof textNode === 'string') {
+    textNode = text(textNode)
+  }
+  if (!textNode || textNode.type !== 'text') {
+    throw new DocFormatError(`Expected string or text node, but found: ${JSON.stringify(textNode)}`)
+  }
   const mark = attrs ? { type, attrs } : { type }
   const marks = textNode.marks ? textNode.marks.concat(mark) : [mark]
   return Object.assign({}, textNode, { marks })
