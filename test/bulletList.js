@@ -196,6 +196,28 @@ test('Bullet List # Must be non-empty', t => {
   t.end()
 })
 
+test('Bullet List # List item can be empty', t => {
+  const node = bulletList(listItem())
+
+  const expected = {
+    'type': 'bulletList',
+    'content': [
+      {
+        'type': 'listItem',
+        'content': [
+          {
+            'type': 'paragraph',
+            'content': []
+          }
+        ]
+      }
+    ]
+  }
+
+  t.deepEqual(node, expected)
+  t.end()
+})
+
 test('Bullet List # Must be given string, node, or array', t => {
   t.throws(() => bulletList(1), DocFormatError)
   t.throws(() => bulletList([1]), DocFormatError)

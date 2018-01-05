@@ -1,10 +1,10 @@
 import { asBlockNode } from './blockNodeUtils'
+import paragraph from './paragraph'
 
 export default function listItem (...content) {
-  // TODO can listItem be empty? No!
   return {
     type: 'listItem',
-    content: content.map(asBlockNode)
+    content: content.length ? content.map(asBlockNode) : [paragraph()]
   }
 }
 
