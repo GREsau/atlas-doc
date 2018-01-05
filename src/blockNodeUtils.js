@@ -26,8 +26,9 @@ export function asBlockNodesWithMerging (items) {
       result.push(mediaGroup(...media))
       continue
     }
-    if (isBlockNode(items[0])) {
-      result.push(items.shift())
+    const blocks = shiftWhere(items, isBlockNode)
+    if (blocks.length) {
+      result.push(...blocks)
       continue
     }
     throw new DocFormatError(`Expected string or node, but found: ${JSON.stringify(items[0])}`)
