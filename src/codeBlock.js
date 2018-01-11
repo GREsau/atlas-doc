@@ -3,13 +3,14 @@ import text from './text'
 
 export default function codeBlock (...content) {
   const textContent = content.map(c => typeof c === 'string' ? text(c) : c)
-  const nonText = textContent.filter(c => !(c && c.type === 'text'))
-  if (nonText.length) {
-    throw new DocFormatError(`codeBlock can only contain text, but found: ${JSON.stringify(nonText[0])}`)
-  }
-  const markedText = textContent.filter(c => (c.marks && c.marks.length))
-  if (markedText.length) {
-    throw new DocFormatError(`codeBlock text must not have marks, but found: ${JSON.stringify(markedText[0])}`)
+
+  for (const node of textContent) {
+    if (!node || node.type !== 'text') {
+      throw new DocFormatError(`codeBlock can only contain text, but found: ${JSON.stringify(node)}`)
+    }
+    if (node.marks && node.marks.length) {
+      throw new DocFormatError(`codeBlock text must not have marks, but found: ${JSON.stringify(node.marks)}`)
+    }
   }
 
   return {
