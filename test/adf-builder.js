@@ -12,7 +12,6 @@ test('adf-builder compatability # including adf-builder block node', t => {
 })
 
 test('adf-builder compatability # including adf-builder inline nodes', t => {
-  // TODO does emoji shortName definitely require colons?
   const actual = doc(paragraph(astrong('strong').toJSON(), 'text'), aemoji(':grin:').toJSON())
 
   const expected = doc(paragraph(strong('strong'), 'text'), emoji('grin'))
