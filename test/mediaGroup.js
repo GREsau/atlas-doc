@@ -2,7 +2,7 @@ import test from 'tape-catch'
 import { doc, media, mediaGroup, strong, paragraph, DocFormatError } from '../src/index'
 
 test('MediaGroup # Contains media nodes', t => {
-  const node = mediaGroup(media('id', 'collection'), media('id2', 'collection2', 'link'))
+  const node = mediaGroup(media('id', 'collection'), media('link', 'id2', 'collection2'))
 
   const expected = {
     'type': 'mediaGroup',
@@ -27,6 +27,14 @@ test('MediaGroup # Contains media nodes', t => {
   }
 
   t.deepEqual(node, expected)
+  t.end()
+})
+
+test('MediaGroup # Can specify media type with helper function', t => {
+  const node1 = mediaGroup(media.file('id', 'collection'), media.link('id2', 'collection2'))
+  const node2 = mediaGroup(media('id', 'collection'), media('link', 'id2', 'collection2'))
+
+  t.deepEqual(node1, node2)
   t.end()
 })
 

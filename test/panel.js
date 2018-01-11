@@ -99,27 +99,10 @@ test('Panel # Can be empty', t => {
 })
 
 test('Panel # Can specify panel type with helper function', t => {
-  const node = panel.tip('text')
+  const node1 = panel.tip('text')
+  const node2 = panel('tip', 'text')
 
-  const expected = {
-    'type': 'panel',
-    'content': [
-      {
-        'type': 'paragraph',
-        'content': [
-          {
-            'type': 'text',
-            'text': 'text'
-          }
-        ]
-      }
-    ],
-    'attrs': {
-      'panelType': 'tip'
-    }
-  }
-
-  t.deepEqual(node, expected)
+  t.deepEqual(node1, node2)
   t.end()
 })
 
