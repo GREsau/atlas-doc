@@ -67,6 +67,21 @@ test('Heading # Has h1-h6 aliases', t => {
   t.end()
 })
 
+test('Heading # Can be empty', t => {
+  const actual = h1()
+
+  const expected = {
+    'type': 'heading',
+    'attrs': {
+      'level': 1
+    },
+    'content': []
+  }
+
+  t.deepEqual(actual, expected)
+  t.end()
+})
+
 test('Heading # Level must be integer from 1 to 6', t => {
   t.throws(() => heading(0, 'text'), DocFormatError)
   t.throws(() => heading(7, 'text'), DocFormatError)

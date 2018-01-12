@@ -1,8 +1,6 @@
 import text from './text'
 import DocFormatError from './DocFormatError'
 
-// TODO can heading be empty? Currently this causes a 500 when sent to Stride...
-
 const levels = [1, 2, 3, 4, 5, 6]
 
 export default function heading (level, ...content) {
