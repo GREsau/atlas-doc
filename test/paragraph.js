@@ -1,8 +1,8 @@
 import test from 'tape-catch'
-import { paragraph, strong, DocFormatError } from '../src/index'
+import { paragraph, p, strong, DocFormatError } from '../src/index'
 
 test('Paragraph # Different item types', t => {
-  const p = paragraph('plain', strong('formatted'))
+  const actual = paragraph('plain', strong('formatted'))
 
   const expected = {
     'type': 'paragraph',
@@ -23,19 +23,36 @@ test('Paragraph # Different item types', t => {
     ]
   }
 
-  t.deepEqual(p, expected)
+  t.deepEqual(actual, expected)
+  t.end()
+})
+
+test('Paragraph # Has p alias', t => {
+  const actual = p('text')
+
+  const expected = {
+    'type': 'paragraph',
+    'content': [
+      {
+        'type': 'text',
+        'text': 'text'
+      }
+    ]
+  }
+
+  t.deepEqual(actual, expected)
   t.end()
 })
 
 test('Paragraph # Can be empty', t => {
-  const p = paragraph()
+  const actual = paragraph()
 
   const expected = {
     'type': 'paragraph',
     'content': []
   }
 
-  t.deepEqual(p, expected)
+  t.deepEqual(actual, expected)
   t.end()
 })
 

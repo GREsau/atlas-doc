@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { code, color, emphasis, link, strike, strong, subscript, superscript, text, underline, DocFormatError, paragraph, hardBreak } from '../src/index'
+import { code, color, emphasis, em, link, a, strike, s, strong, b, subscript, sub, superscript, sup, text, underline, u, DocFormatError, paragraph, hardBreak } from '../src/index'
 
 test('Text # plain text', t => {
   const node = text('plain text')
@@ -52,6 +52,7 @@ test('Text # color', t => {
 
 test('Text # emphasis', t => {
   const node = emphasis('emphasis')
+  const aliasedNode = em('emphasis')
 
   const expected = {
     'type': 'text',
@@ -64,11 +65,13 @@ test('Text # emphasis', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # link', t => {
   const node = link('link', 'http://example.com')
+  const aliasedNode = a('link', 'http://example.com')
 
   const expected = {
     'type': 'text',
@@ -84,11 +87,13 @@ test('Text # link', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # strike', t => {
   const node = strike('strike')
+  const aliasedNode = s('strike')
 
   const expected = {
     'type': 'text',
@@ -101,11 +106,13 @@ test('Text # strike', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # strong', t => {
   const node = strong('strong')
+  const aliasedNode = b('strong')
 
   const expected = {
     'type': 'text',
@@ -118,11 +125,13 @@ test('Text # strong', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # subscript', t => {
   const node = subscript('subscript')
+  const aliasedNode = sub('subscript')
 
   const expected = {
     'type': 'text',
@@ -138,11 +147,13 @@ test('Text # subscript', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # superscript', t => {
   const node = superscript('superscript')
+  const aliasedNode = sup('superscript')
 
   const expected = {
     'type': 'text',
@@ -158,11 +169,13 @@ test('Text # superscript', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 
 test('Text # underline', t => {
   const node = underline('underline')
+  const aliasedNode = u('underline')
 
   const expected = {
     'type': 'text',
@@ -175,6 +188,7 @@ test('Text # underline', t => {
   }
 
   t.deepEqual(node, expected)
+  t.deepEqual(aliasedNode, expected)
   t.end()
 })
 

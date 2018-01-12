@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { bulletList, listItem, paragraph, strong, DocFormatError } from '../src/index'
+import { bulletList, listItem, ul, li, paragraph, strong, DocFormatError } from '../src/index'
 
 test('Bullet List # Different item types', t => {
   const list = bulletList('plain', strong('formatted'), paragraph('paragraph'), listItem('double 1', strong('double 2'), paragraph('double 3')))
@@ -193,6 +193,33 @@ test('Bullet List # Can be nested', t => {
 
 test('Bullet List # Must be non-empty', t => {
   t.throws(() => bulletList(), DocFormatError)
+  t.end()
+})
+
+test('Bullet List # Has ul alias', t => {
+  const list = ul(li('text'))
+
+  const expected = {
+    'type': 'bulletList',
+    'content': [
+      {
+        'type': 'listItem',
+        'content': [
+          {
+            'type': 'paragraph',
+            'content': [
+              {
+                'type': 'text',
+                'text': 'text'
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+
+  t.deepEqual(list, expected)
   t.end()
 })
 

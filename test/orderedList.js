@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { orderedList, listItem, paragraph, strong, DocFormatError } from '../src/index'
+import { orderedList, listItem, ol, li, paragraph, strong, DocFormatError } from '../src/index'
 
 test('Ordered List # Can specify starting number', t => {
   const list = orderedList(3, 'Number 3')
@@ -209,6 +209,33 @@ test('Ordered List # Can be nested', t => {
                     ]
                   }
                 ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+
+  t.deepEqual(list, expected)
+  t.end()
+})
+
+test('Ordered List # Has ol alias', t => {
+  const list = ol(li('text'))
+
+  const expected = {
+    'type': 'orderedList',
+    'content': [
+      {
+        'type': 'listItem',
+        'content': [
+          {
+            'type': 'paragraph',
+            'content': [
+              {
+                'type': 'text',
+                'text': 'text'
               }
             ]
           }

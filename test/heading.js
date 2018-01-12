@@ -1,8 +1,8 @@
 import test from 'tape-catch'
-import { heading, paragraph, strong, emoji, link, DocFormatError } from '../src/index'
+import { heading, h1, h2, h3, h4, h5, h6, paragraph, strong, emoji, link, DocFormatError } from '../src/index'
 
 test('Heading # Different item types', t => {
-  const p = heading(1, 'plain', link('text', 'http://example.com'))
+  const actual = heading(1, 'plain', link('text', 'http://example.com'))
 
   const expected = {
     'type': 'heading',
@@ -29,7 +29,7 @@ test('Heading # Different item types', t => {
     ]
   }
 
-  t.deepEqual(p, expected)
+  t.deepEqual(actual, expected)
   t.end()
 })
 
@@ -37,6 +37,33 @@ test('Heading # Level can be integer from 1 to 6', t => {
   for (let level = 1; level <= 6; level++) {
     t.doesNotThrow(() => heading(level, 'text'))
   }
+  t.end()
+})
+
+test('Heading # Has h1-h6 aliases', t => {
+  function expectHeading (actual, level) {
+    const expected = {
+      'type': 'heading',
+      'attrs': {
+        'level': level
+      },
+      'content': [
+        {
+          'type': 'text',
+          'text': 'text'
+        }
+      ]
+    }
+
+    t.deepEqual(actual, expected)
+  }
+
+  expectHeading(h1('text'), 1)
+  expectHeading(h2('text'), 2)
+  expectHeading(h3('text'), 3)
+  expectHeading(h4('text'), 4)
+  expectHeading(h5('text'), 5)
+  expectHeading(h6('text'), 6)
   t.end()
 })
 

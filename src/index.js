@@ -1,18 +1,28 @@
-export { default as paragraph } from './paragraph'
+export { default as paragraph, default as p } from './paragraph'
 export { default as panel } from './panel'
-export { default as heading } from './heading'
+export { default as heading, h1, h2, h3, h4, h5, h6 } from './heading'
 export { default as codeBlock } from './codeBlock'
 export { default as blockquote } from './blockquote'
-export { default as bulletList } from './bulletList'
-export { default as orderedList } from './orderedList'
-export { default as listItem } from './listItem'
-export { default as rule } from './rule'
-export { code, color, emphasis, link, strike, strong, subscript, superscript, underline } from './markedText'
+export { default as bulletList, default as ul } from './bulletList'
+export { default as orderedList, default as ol } from './orderedList'
+export { default as listItem, default as li } from './listItem'
+export { default as rule, default as hr } from './rule'
 export { default as text } from './text'
 export { default as emoji } from './emoji'
 export { default as media } from './media'
 export { default as mediaGroup } from './mediaGroup'
-export { default as hardBreak } from './hardBreak'
+export { default as hardBreak, default as br } from './hardBreak'
 export { default as mention } from './mention'
 export { default as doc } from './doc'
 export { default as DocFormatError } from './DocFormatError'
+export {
+  code,
+  color,
+  emphasis, emphasis as em,
+  link, link as a,
+  strike, strike as s,
+  strong, strong as b,
+  subscript, subscript as sub,
+  superscript, superscript as sup,
+  underline, underline as u
+} from './markedText'

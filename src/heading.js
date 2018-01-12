@@ -29,3 +29,10 @@ export default function heading (level, ...content) {
     content: textContent
   }
 }
+
+export const h1 = (...content) => heading(1, ...content)
+export const h2 = (...content) => heading(2, ...content)
+export const h3 = (...content) => heading(3, ...content)
+export const h4 = (...content) => heading(4, ...content)
+export const h5 = (...content) => heading(5, ...content)
+export const h6 = (...content) => heading(6, ...content)
