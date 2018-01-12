@@ -245,7 +245,7 @@ test('Bullet List # List item can be empty', t => {
   t.end()
 })
 
-test('Bullet List # Must be given string, node, or array', t => {
+test('Bullet List # Must be given string or node', t => {
   t.throws(() => bulletList(1), DocFormatError)
   t.throws(() => bulletList([1]), DocFormatError)
   t.throws(() => bulletList({}), DocFormatError)

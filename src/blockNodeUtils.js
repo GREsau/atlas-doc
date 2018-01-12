@@ -3,7 +3,7 @@ import { isInlineNode } from './inlineNodeUtils'
 import paragraph from './paragraph'
 import mediaGroup from './mediaGroup'
 
-const blockNodeTypes = ['applicationCard', 'blockquote', 'bulletList', 'codeBlock', 'decisionList', 'heading', 'mediaGroup', 'orderedList', 'panel', 'paragraph', 'rule', 'taskList']
+const blockNodeTypes = ['applicationCard', 'blockquote', 'bulletList', 'codeBlock', 'decisionList', 'heading', 'mediaGroup', 'orderedList', 'panel', 'paragraph', 'rule', 'table', 'taskList']
 export function isBlockNode (node) {
   return node && blockNodeTypes.indexOf(node.type) > -1
 }

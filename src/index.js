@@ -14,7 +14,12 @@ export { default as mediaGroup } from './mediaGroup'
 export { default as hardBreak, default as br } from './hardBreak'
 export { default as mention } from './mention'
 export { default as doc } from './doc'
-export { default as DocFormatError } from './DocFormatError'
+export {
+  table,
+  tableRow, tableRow as tr,
+  tableCell, tableCell as td,
+  tableHeader, tableHeader as th
+} from './table'
 export {
   code,
   color,
@@ -26,3 +31,4 @@ export {
   superscript, superscript as sup,
   underline, underline as u
 } from './markedText'
+export { default as DocFormatError } from './DocFormatError'
