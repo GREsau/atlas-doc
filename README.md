@@ -137,7 +137,7 @@ emoji(shortName, altText)
 An inline node representing an emoji. You can give the `shortName` with or without the colons at the start/end. If `altText` is given, then it will be displayed when no matching emoji could be found.
 
 ```javascript
-doc(emoji("poop"), emoji(":poop:"), emoji("non-existent emoji", "oops"))
+paragraph(emoji("poop"), emoji(":poop:"), emoji("non-existent emoji", "oops"))
 ```
 > :poop: :poop: oops
 
@@ -150,8 +150,38 @@ A special node that must be used at the very top-level, and contains block nodes
 
 ## hardBreak
 *alias: `br`*
+```javascript
+hardBreak()
+```
+
+An inline node representing a new line.
+
+```javascript
+paragraph("Line 1", hardBreak(), "Line 2")
+```
+> Line 1  
+> Line 2
 
 ## heading
+```javascript
+heading(level, ...content)
+h1(...content)
+h2(...content)
+h3(...content)
+h4(...content)
+h5(...content)
+h6(...content)
+```
+
+A block node that can only contain text nodes. `level` must be an integer between 1 and 6, where 1 is the largest heading and 6 is the smallest.
+
+```javascript
+doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubheading"), "Regular text")
+```
+> # Title
+> ## Subheading
+> #### Subsubsubheading
+> Regular text
 
 ## media / mediaGroup
 
