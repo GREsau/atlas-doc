@@ -11,7 +11,7 @@
   },
   "scripts": {
     "lint": "standard --verbose src/**/*.js test/**/*.js | snazzy",
-    "test": "tape -r babel-register test/**/*.js | tap-spec",
+    "test": "tape -r babel-register test/**/*.js | tap-summary",
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
     "build": "npm run lint && npm test && npm run clean && npm run compile"
@@ -26,7 +26,7 @@
     "rimraf": "^2.6.2",
     "snazzy": "^7.0.0",
     "standard": "^10.0.3",
-    "tap-spec": "^4.1.1",
+    "tap-summary": "^4.0.0",
     "tape": "^4.8.0",
     "tape-catch": "^1.0.6"
   }
