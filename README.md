@@ -46,85 +46,146 @@ Resulting in the document:
 > - **foo**
 > - _bar_
 
-## Nodes
+# Nodes
 
 There are two main types of nodes: block nodes (e.g. `paragraph`) and inline nodes (e.g. `text`).
 
-Block nodes can be used directly in a `doc`, and can also contain other nodes or specific types. 
+**Block nodes** can be used directly in a `doc`, and can also contain other nodes or specific types. 
 
-Normally in Atlassian document format, an inline node cannot be used directly in a `doc` But you can in `atlas-doc`, as it will implicitly wrap inline nodes in a `paragraph` whenever they're used where a block node expected.
+Normally in Atlassian document format, an **inline node** cannot be used directly in a `doc` But you can in `atlas-doc`, as it will implicitly wrap inline nodes in a `paragraph` whenever they're used where a block node expected.
 
-### applicationCard
+## applicationCard
 Not yet supported by `atlas-doc`, sorry!
 
-### blockquote
+## blockquote
+```javascript
+blockquote(...content)
+```
 
-### bulletList
+A block node that can contain other block nodes, representing quoted content.
+
+```javascript
+blockquote("Some text", blockquote("And they can be nested!"))
+```
+> > Some text
+> > > And they can be nested!
+
+## bulletList
 *alias: `ul`*
+```javascript
+bulletList(...listItems)
+```
 
-### codeBlock
+A block node that can contain other block nodes, representing quoted content.
 
-### decisionItem / decisionList
+```javascript
+bulletList("First", "Second", "Third")
+```
+> - First
+> - Second
+> - Third
+
+If you want a single list item to contain multiple nodes, wrap them in a `listItem`/`li`.
+
+```javascript
+bulletList(
+  listItem("First, ", "still first")
+  listItem("Second, with indented list: ", bulletList("Hi!", "Hello!"))
+)
+```
+> - First, still first
+> - Second, with indented list:
+>   - Hi!
+>   - Hello!
+
+## codeBlock
+```javascript
+codeBlock(language, ...content)
+codeBlock.plain(...content)
+codeBlock.csharp(...content)
+codeBlock.javascript(...content) // etc.
+```
+
+A block node that can only contain unmarked text nodes. To specify the language, give it as the first argument to `codeBlock()`, or use one of the helper functions on the `codeBlock` object.
+
+```javascript
+codeBlock("javascript", "var x = 1\n", "alert(x)")
+codeBlock.javascript("var x = 1\n", "alert(x)")
+```
+> ```javascript
+> var x = 1
+> alert(x)
+
+If you don't want to specify a language (i.e. you just want monospaced text with no syntax highlighting), give a falsey value as the first argument to `codeBlock()`, or use the `codeBlock.plain()` helper function.
+
+```
+codeBlock(null, "This will be monospaced")
+codeBlock.plain("This will be monospaced")
+```
+> ```
+> This will be monospaced
+
+## decisionItem / decisionList
 Not yet supported by `atlas-doc`, sorry!
 
-### emoji
+## emoji
 
-### doc
+## doc
 
-### hardBreak
+## hardBreak
 *alias: `br`*
 
-### heading
+## heading
 
-### media / mediaGroup
+## media / mediaGroup
 
-### mention
+## mention
 
-### listItem
+## listItem
 *alias: `li`*
 
-### orderedList
+## orderedList
 *alias: `ol`*
 
-### panel
+## panel
 
-### paragraph
+## paragraph
 *alias: `p`*
 
-### rule
+## rule
 *alias: `hr`*
 
-### table / tableRow / tableHeader / tableCell
+## table / tableRow / tableHeader / tableCell
 *aliases: `tr` / `th` / `td`*
 
-### taskItem / taskList
+## taskItem / taskList
 Not yet supported by `atlas-doc`, sorry!
 
-### text
+## text
 
-#### code
+### code
 
-#### emphasis
+### emphasis
 *aliases: `em` or `i`*
 
-#### link
+### link
 *alias: `a`*
 
-#### strike
+### strike
 *alias: `s`*
 
-#### strong
+### strong
 *alias: `b`*
 
-#### subscript
+### subscript
 *alias: `sub`*
 
-#### supscript
+### supscript
 *alias: `sup`*
 
-#### textColor
+### textColor
 
-#### underline
+### underline
 *alias: `u`*
 
 ## License
