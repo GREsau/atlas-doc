@@ -34,7 +34,8 @@ export default function codeBlock (language, ...content) {
 for (const language of languages) {
   codeBlock[language] = (...content) => codeBlock(language, ...content)
 }
-for (const [alias, language] of Object.entries(languageAliases)) {
+for (const alias of Object.keys(languageAliases)) {
+  const language = languageAliases[alias]
   codeBlock[alias] = (...content) => codeBlock(language, ...content)
 }
 codeBlock.plain = (...content) => codeBlock(null, ...content)

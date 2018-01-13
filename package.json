@@ -11,7 +11,7 @@
   },
   "scripts": {
     "lint": "standard --verbose src/**/*.js test/**/*.js | snazzy",
-    "test": "tape -r babel-register test/**/*.js | tap-summary",
+    "test": "tape -r ./test/setupBabel.js test/**/*.js | tap-summary",
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
     "build": "npm run lint && npm test && npm run clean && npm run compile"
