@@ -46,6 +46,86 @@ Resulting in the document:
 > - **foo**
 > - _bar_
 
+## Nodes
+
+There are two main types of nodes: block nodes (e.g. `paragraph`) and inline nodes (e.g. `text`).
+
+Block nodes can be used directly in a `doc`, and can also contain other nodes or specific types. 
+
+Normally in Atlassian document format, an inline node cannot be used directly in a `doc` But you can in `atlas-doc`, as it will implicitly wrap inline nodes in a `paragraph` whenever they're used where a block node expected.
+
+### applicationCard
+Not yet supported by `atlas-doc`, sorry!
+
+### blockquote
+
+### bulletList
+*alias: `ul`*
+
+### codeBlock
+
+### decisionItem / decisionList
+Not yet supported by `atlas-doc`, sorry!
+
+### emoji
+
+### doc
+
+### hardBreak
+*alias: `br`*
+
+### heading
+
+### media / mediaGroup
+
+### mention
+
+### listItem
+*alias: `li`*
+
+### orderedList
+*alias: `ol`*
+
+### panel
+
+### paragraph
+*alias: `p`*
+
+### rule
+*alias: `hr`*
+
+### table / tableRow / tableHeader / tableCell
+*aliases: `tr` / `th` / `td`*
+
+### taskItem / taskList
+Not yet supported by `atlas-doc`, sorry!
+
+### text
+
+#### code
+
+#### emphasis
+*aliases: `em` or `i`*
+
+#### link
+*alias: `a`*
+
+#### strike
+*alias: `s`*
+
+#### strong
+*alias: `b`*
+
+#### subscript
+*alias: `sub`*
+
+#### supscript
+*alias: `sup`*
+
+#### textColor
+
+#### underline
+*alias: `u`*
 
 ## License
 
