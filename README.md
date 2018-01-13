@@ -118,7 +118,7 @@ codeBlock.javascript("var x = 1\n", "alert(x)")
 
 If you don't want to specify a language (i.e. you just want monospaced text with no syntax highlighting), give a falsey value as the first argument to `codeBlock()`, or use the `codeBlock.plain()` helper function.
 
-```
+```javascript
 codeBlock(null, "This will be monospaced")
 codeBlock.plain("This will be monospaced")
 ```
@@ -129,8 +129,24 @@ codeBlock.plain("This will be monospaced")
 Not yet supported by `atlas-doc`, sorry!
 
 ## emoji
+```javascript
+emoji(shortName)
+emoji(shortName, altText)
+```
+
+An inline node representing an emoji. You can give the `shortName` with or without the colons at the start/end. If `altText` is given, then it will be displayed when no matching emoji could be found.
+
+```javascript
+doc(emoji("poop"), emoji(":poop:"), emoji("non-existent emoji", "oops"))
+```
+> :poop: :poop: oops
 
 ## doc
+```javascript
+doc(...content)
+```
+
+A special node that must be used at the very top-level, and contains block nodes. It cannot be contained within any other node.
 
 ## hardBreak
 *alias: `br`*
