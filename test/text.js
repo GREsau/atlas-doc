@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { code, color, emphasis, em, link, a, strike, s, strong, b, subscript, sub, superscript, sup, text, underline, u, DocFormatError, paragraph, hardBreak } from '../src/index'
+import { code, color, emphasis, em, i, link, a, strike, s, strong, b, subscript, sub, superscript, sup, text, underline, u, DocFormatError, paragraph, hardBreak } from '../src/index'
 
 test('Text # plain text', t => {
   const node = text('plain text')
@@ -53,6 +53,7 @@ test('Text # color', t => {
 test('Text # emphasis', t => {
   const node = emphasis('emphasis')
   const aliasedNode = em('emphasis')
+  const aliasedNode2 = i('emphasis')
 
   const expected = {
     'type': 'text',
@@ -66,6 +67,7 @@ test('Text # emphasis', t => {
 
   t.deepEqual(node, expected)
   t.deepEqual(aliasedNode, expected)
+  t.deepEqual(aliasedNode2, expected)
   t.end()
 })
 

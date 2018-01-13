@@ -23,7 +23,7 @@ export {
 export {
   code,
   color,
-  emphasis, emphasis as em,
+  emphasis, emphasis as em, emphasis as i,
   link, link as a,
   strike, strike as s,
   strong, strong as b,
