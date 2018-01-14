@@ -12,7 +12,7 @@
   "scripts": {
     "lint": "standard --verbose src/**/*.js test/**/*.js | snazzy",
     "test": "tape -r ./test/setupBabel.js test/**/*.js | tap-summary",
-    "coverage": "nyc npm test && nyc report --reporter=lcov",
+    "coverage": "nyc --reporter=html --reporter=json --reporter=text npm test",
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
     "build": "npm run lint && npm test && npm run clean && npm run compile",
