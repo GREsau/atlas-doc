@@ -1,8 +1,8 @@
 # atlas-doc
 
-[![Build Status](https://img.shields.io/travis/GREsau/atlas-doc.svg?style=flat)](https://travis-ci.org/GREsau/atlas-doc)
-[![Code Coverage](https://img.shields.io/codecov/c/github/GREsau/atlas-doc.svg?style=flat)](https://codecov.io/gh/GREsau/atlas-doc)
-[![License](https://img.shields.io/github/license/GREsau/atlas-doc.svg?style=flat)](https://github.com/GREsau/atlas-doc/blob/master/LICENSE)
+[![npm version](https://img.shields.io/npm/v/atlas-doc.svg)](https://www.npmjs.com/package/atlas-doc)
+[![Build status](https://img.shields.io/travis/GREsau/atlas-doc.svg)](https://travis-ci.org/GREsau/atlas-doc)
+[![Code coverage](https://img.shields.io/codecov/c/github/GREsau/atlas-doc.svg)](https://codecov.io/gh/GREsau/atlas-doc)
 
 Easily create [Atlassian Documents](https://developer.atlassian.com/cloud/stride/apis/document/structure/) for use with the Stride API.
 
