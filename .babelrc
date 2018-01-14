@@ -8,5 +8,10 @@
         }
       }
     ]
-  ]
+  ],
+  "env": {
+    "coverage": {
+      "plugins": ["istanbul"]
+    }
+  }
 }
