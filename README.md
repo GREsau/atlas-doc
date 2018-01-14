@@ -176,7 +176,7 @@ h6(...content)
 A block node that can only contain text nodes. `level` must be an integer between 1 and 6, where 1 is the largest heading and 6 is the smallest.
 
 ```javascript
-doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubheading"), "Regular text")
+doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubsubheading"), "Regular text")
 ```
 > # Title
 > ## Subheading
