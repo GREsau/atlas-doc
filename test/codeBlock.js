@@ -60,22 +60,10 @@ test('Code Block # Can specify language in first parameter', t => {
 })
 
 test('Code Block # Can specify language with helper function', t => {
-  const actual = codeBlock.javascript('text')
+  t.deepEqual(codeBlock.javascript('code'), codeBlock('javascript', 'code'))
+  t.deepEqual(codeBlock.cpp('code'), codeBlock('cpp', 'code'))
+  t.deepEqual(codeBlock['c++']('code'), codeBlock('c++', 'code'))
 
-  const expected = {
-    'type': 'codeBlock',
-    'content': [
-      {
-        'type': 'text',
-        'text': 'text'
-      }
-    ],
-    'attrs': {
-      'language': 'javascript'
-    }
-  }
-
-  t.deepEqual(actual, expected)
   t.end()
 })
 
