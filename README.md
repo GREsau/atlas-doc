@@ -281,9 +281,35 @@ panel("info", "Some text", panel.warning("And they can be nested!"))
 
 ## paragraph
 *alias: `p`*
+```javascript
+paragraph(...content)
+```
+
+A block node that can contain inline nodes. Whenever any inline nodes are used where a block node is expected (such as directly in a `doc` node), they are implicitly wrapped in a `paragraph`.
+
+```javascript
+doc(paragraph("The first paragraph"), paragraph("The ", "second ", "paragraph"))
+```
+> The first paragraph
+>
+> The second paragraph
 
 ## rule
 *alias: `hr`*
+```javascript
+rule()
+```
+
+A block node that represents a horizontal divider in the document.
+
+```javascript
+doc("The first section", rule(), "The second section")
+```
+> The first section
+>
+> ----------
+>
+> The second section
 
 ## table / tableRow / tableHeader / tableCell
 *aliases: `tr` / `th` / `td`*
