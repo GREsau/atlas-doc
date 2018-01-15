@@ -371,7 +371,13 @@ emphasis("wow")
 
 ### link
 *alias: `a`*
-<!-- TODO -->
+```javascript
+link(textContent, url)
+```
+```javascript
+link("Click here", "http://example.com")
+```
+> [Click here](http://example.com)
 
 ### strike
 *alias: `s`*
@@ -414,7 +420,13 @@ superscript("up here")
 > <sup>up here</sup>
 
 ### textColor
-<!-- TODO -->
+```javascript
+textColor(textContent, color)
+```
+```javascript
+textColor("colorful", "#cc00ee")
+```
+> ![Text color example](https://i.imgur.com/8n9YOd2.png)
 
 ### underline
 *alias: `u`*
