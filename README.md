@@ -277,7 +277,7 @@ A block node that can contain other block nodes to be promoted in a document. If
 ```javascript
 panel("info", "Some text", panel.warning("And they can be nested!"))
 ```
-![Panel example](https://i.imgur.com/hLWN1ol.png)
+> ![Panel example](https://i.imgur.com/hLWN1ol.png)
 
 ## paragraph
 *alias: `p`*
@@ -313,36 +313,118 @@ doc("The first section", rule(), "The second section")
 
 ## table / tableRow / tableHeader / tableCell
 *aliases: `tr` / `th` / `td`*
+```javascript
+table(...rows)
+tableRow(...cells)
+tableHeader(...content)
+tableCell(...content)
+```
+
+A block node for creating tables. The `table` node can only contain `tableRow` nodes. Normally in Atlassian document format, a `tableRow` node can only contain `tableHeader` or `tableCell` nodes, but `atlas-doc` will implicitly wrap other content in a `tableCell` when it occurs directly in a `tableRow`. A `tableHeader` or `tableCell` node can contain block nodes.
+
+```javascript
+table(
+  tableRow(tableHeader("First header"), tableHeader("Second header")),
+  tableRow(tableCell("First cell"), tableCell("Second cell")),
+  tableRow("First text", "Second text")
+)
+```
+> | First header | Second header |
+> | ------------ | ------------- |
+> | First cell   | Second cell   |
+> | First text   | Second text   |
 
 ## taskItem / taskList
 Not yet supported by `atlas-doc`, sorry!
 
 ## text
+```javascript
+text(textContent)
+```
+An inline node representing raw text. You should never need to use this directly, as `atlas-doc` will implicitly wrap a plain string in a `text` node where necessary.
+
+```javascript
+doc(text("Hello there"))
+// equivalent to
+doc("Hello there")
+```
+> Hello there
 
 ### code
+```javascript
+code(textContent)
+```
+```javascript
+code("var x = 1;")
+```
+> `var x = 1;`
 
 ### emphasis
 *aliases: `em` or `i`*
+```javascript
+emphasis(textContent)
+```
+```javascript
+emphasis("wow")
+```
+> *wow*
 
 ### link
 *alias: `a`*
+<!-- TODO -->
 
 ### strike
 *alias: `s`*
+```javascript
+strike(textContent)
+```
+```javascript
+strike("wrong")
+```
+> ~~wrong~~
 
 ### strong
 *alias: `b`*
+```javascript
+strong(textContent)
+```
+```javascript
+strong("important")
+```
+> **important**
 
 ### subscript
 *alias: `sub`*
+```javascript
+subscript(textContent)
+```
+```javascript
+subscript("down here")
+```
+> <sub>down here</sub>
 
-### supscript
+### superscript
 *alias: `sup`*
+```javascript
+superscript(textContent)
+```
+```javascript
+superscript("up here")
+```
+> <sup>up here</sup>
 
 ### textColor
+<!-- TODO -->
 
 ### underline
 *alias: `u`*
+```javascript
+underline(textContent)
+```
+```javascript
+underline("underlined")
+```
+> ![Underline example](https://i.imgur.com/WNUjNgX.png)
 
 ## License
 
