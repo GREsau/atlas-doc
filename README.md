@@ -228,6 +228,11 @@ mention('some-user-id')
 
 ## listItem
 *alias: `li`*
+```javascript
+listItem(...content)
+```
+
+A node used to group multiple block nodes into a single item within a list. See `bulletList` and `orderedList` for details.
 
 ## orderedList
 *alias: `ol`*
@@ -259,6 +264,26 @@ orderedList(
 >     2. Hello!
 
 ## panel
+```javascript
+panel(type, ...content)
+panel.info(...content)
+panel.note(...content)
+panel.tip(...content)
+panel.warning(...content)
+```
+
+A block node that can contain other block nodes to be promoted in a document. If calling `panel()` directly, the `type` argument must be either "info", "note", "tip" or "warning".
+
+```javascript
+panel("info", "Some text", panel.warning("And they can be nested!"))
+```
+<!--- TODO check colours and styling --->
+> <aside style="padding: 5px; background-color: #ccddff">
+> Some text
+> <aside style="padding: 5px; background-color: #ffcccc">
+> And they can be nested!
+> </aside>
+> </aside>
 
 ## paragraph
 *alias: `p`*
