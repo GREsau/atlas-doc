@@ -277,12 +277,14 @@ A block node that can contain other block nodes to be promoted in a document. If
 ```javascript
 panel("info", "Some text", panel.warning("And they can be nested!"))
 ```
-<!--- TODO check colours and styling --->
-> <aside style="padding: 5px; background-color: #ccddff">
-> Some text
-> <aside style="padding: 5px; background-color: #ffcccc">
-> And they can be nested!
-> </aside>
+> <aside style="border-radius: 3px; padding: 8px; background: #DEEBFF; color: #172B4D;">
+>  <div style="position: absolute; max-width: 25px">:information_source:</div>
+>  <div style="margin-left: 25px;">
+>   Some text
+>   <aside style="border-radius: 3px; padding: 8px; background: #FFFAE6;">
+>    :warning: And they can be nested!
+>   </aside>
+>  </div>
 > </aside>
 
 ## paragraph
