@@ -424,7 +424,7 @@ underline(textContent)
 ```javascript
 underline("underlined")
 ```
-> ![Underline example](https://i.imgur.com/WNUjNgX.png)
+> ![Underline example](https://i.imgur.com/MkcsRtg.png)
 
 ## License
 
