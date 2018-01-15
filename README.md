@@ -76,7 +76,7 @@ blockquote("Some text", blockquote("And they can be nested!"))
 bulletList(...listItems)
 ```
 
-A block node that can contain other block nodes, representing quoted content.
+A block node representing an unordered list with leading bullets.
 
 ```javascript
 bulletList("First", "Second", "Third")
@@ -215,12 +215,48 @@ doc(mediaGroup(media("file-1a", "conversation"), media("file-1b", "conversation"
 ```
 
 ## mention
+```javascript
+mention(userId)
+```
+
+An inline node used to mention a user.
+
+```javascript
+mention('some-user-id')
+```
+> @SomeUser
 
 ## listItem
 *alias: `li`*
 
 ## orderedList
 *alias: `ol`*
+```javascript
+orderedList(...listItems)
+orderedList(startFrom, ...listItems)
+```
+
+A block node representing an ordered list with leading numbers. The `startFrom` argument can be used to set the number of the first list item, which defaults to 1.
+
+```javascript
+orderedList(3, "Third", "Fourth", "Fifth")
+```
+> 3. Third
+> 4. Fourth
+> 5. Fifth
+
+If you want a single list item to contain multiple nodes, wrap them in a `listItem`/`li`.
+
+```javascript
+orderedList(
+  listItem("First, ", "still first")
+  listItem("Second, with indented list: ", orderedList("Hi!", "Hello!"))
+)
+```
+> 1. First, still first
+> 2. Second, with indented list:
+>     1. Hi!
+>     2. Hello!
 
 ## panel
 
