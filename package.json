@@ -16,7 +16,7 @@
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
     "build": "npm run lint && npm test && npm run clean && npm run compile",
-    "prepublish": "npm run build"
+    "prepublishOnly": "npm run build"
   },
   "author": "Graham Esau",
   "license": "ISC",
