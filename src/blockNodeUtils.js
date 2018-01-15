@@ -2,6 +2,7 @@ import DocFormatError from './DocFormatError'
 import { isInlineNode } from './inlineNodeUtils'
 import paragraph from './paragraph'
 import mediaGroup from './mediaGroup'
+import taskList from './taskList'
 
 const blockNodeTypes = ['applicationCard', 'blockquote', 'bulletList', 'codeBlock', 'decisionList', 'heading', 'mediaGroup', 'orderedList', 'panel', 'paragraph', 'rule', 'table', 'taskList']
 export function isBlockNode (node) {
@@ -24,6 +25,11 @@ export function asBlockNodesWithMerging (items) {
     const media = shiftWhere(items, i => (i && i.type === 'media'))
     if (media.length) {
       result.push(mediaGroup(...media))
+      continue
+    }
+    const tasks = shiftWhere(items, i => (i && i.type === 'taskItem'))
+    if (tasks.length) {
+      result.push(taskList(...tasks))
       continue
     }
     const blocks = shiftWhere(items, isBlockNode)
