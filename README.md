@@ -65,7 +65,7 @@ blockquote(...content)
 A block node that can contain other block nodes, representing quoted content.
 
 ```javascript
-blockquote("Some text", blockquote("And they can be nested!"))
+blockquote('Some text', blockquote('And they can be nested!'))
 ```
 > > Some text
 > > > And they can be nested!
@@ -79,7 +79,7 @@ bulletList(...listItems)
 A block node representing an unordered list with leading bullets.
 
 ```javascript
-bulletList("First", "Second", "Third")
+bulletList('First', 'Second', 'Third')
 ```
 > - First
 > - Second
@@ -89,8 +89,8 @@ If you want a single list item to contain multiple nodes, wrap them in a `listIt
 
 ```javascript
 bulletList(
-  listItem("First, ", "still first")
-  listItem("Second, with indented list: ", bulletList("Hi!", "Hello!"))
+  listItem('First, ', 'still first')
+  listItem('Second, with indented list: ', bulletList('Hi!', 'Hello!'))
 )
 ```
 > - First, still first
@@ -109,9 +109,9 @@ codeBlock.javascript(...content) // etc.
 A block node that can only contain unmarked text nodes. To specify the language, give it as the first argument to `codeBlock()`, or use one of the helper functions on the `codeBlock` object.
 
 ```javascript
-codeBlock("javascript", "var x = 1\n", "alert(x)")
+codeBlock('javascript', 'var x = 1\n', 'alert(x)')
 // or
-codeBlock.javascript("var x = 1\n", "alert(x)")
+codeBlock.javascript('var x = 1\n', 'alert(x)')
 ```
 > ```javascript
 > var x = 1
@@ -120,9 +120,9 @@ codeBlock.javascript("var x = 1\n", "alert(x)")
 If you don't want to specify a language (i.e. you just want monospaced text with no syntax highlighting), give a falsey value as the first argument to `codeBlock()`, or use the `codeBlock.plain()` helper function.
 
 ```javascript
-codeBlock(null, "This will be monospaced")
+codeBlock(null, 'This will be monospaced')
 // or
-codeBlock.plain("This will be monospaced")
+codeBlock.plain('This will be monospaced')
 ```
 > ```
 > This will be monospaced
@@ -139,7 +139,7 @@ emoji(shortName, altText)
 An inline node representing an emoji. You can give the `shortName` with or without the colons at the start/end. If `altText` is given, then it will be displayed when no matching emoji could be found.
 
 ```javascript
-paragraph(emoji("poop"), emoji(":poop:"), emoji("non-existent emoji", "oops"))
+paragraph(emoji('poop'), emoji(':poop:'), emoji('non-existent emoji', 'oops'))
 ```
 > :poop: :poop: oops
 
@@ -159,7 +159,7 @@ hardBreak()
 An inline node representing a new line.
 
 ```javascript
-paragraph("Line 1", hardBreak(), "Line 2")
+paragraph('Line 1', hardBreak(), 'Line 2')
 ```
 > Line 1  
 > Line 2
@@ -178,7 +178,7 @@ h6(...content)
 A block node that can only contain `text` nodes. `level` must be an integer between 1 and 6, where 1 is the largest heading and 6 is the smallest.
 
 ```javascript
-doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubsubheading"), "Regular text")
+doc(heading(1, 'Title'), heading(2, 'Subheading'), heading(4, 'Subsubsubheading'), 'Regular text')
 ```
 > # Title
 > ## Subheading
@@ -200,7 +200,7 @@ If the `type` argument is given, it must be either "link" or "file" - if omitted
 Normally in Atlassian document format, a `media` node can only occur in a `mediaGroup`, but `atlas-doc`, will implicitly wrap `media` in a `mediaGroup` when necessary.
 
 ```javascript
-doc(media("file-id", "conversation-id"))
+doc(media('file-id', 'conversation-id'))
 ```
 
 ## mediaGroup
@@ -211,7 +211,7 @@ mediaGroup(...content)
 A block node that can only contain `media` nodes. You'd rarely need to use this directly, unless you want to explicitly group multiple `media` nodes together/separately.
 
 ```javascript
-doc(mediaGroup(media("file-1a", "conversation"), media("file-1b", "conversation")), media("file-2", "conversation"))
+doc(mediaGroup(media('file-1a', 'conversation'), media('file-1b', 'conversation')), media('file-2', 'conversation'))
 ```
 
 ## mention
@@ -244,7 +244,7 @@ orderedList(startFrom, ...listItems)
 A block node representing an ordered list with leading numbers. The `startFrom` argument can be used to set the number of the first list item, which defaults to 1.
 
 ```javascript
-orderedList(3, "Third", "Fourth", "Fifth")
+orderedList(3, 'Third', 'Fourth', 'Fifth')
 ```
 > 3. Third
 > 4. Fourth
@@ -254,8 +254,8 @@ If you want a single list item to contain multiple nodes, wrap them in a `listIt
 
 ```javascript
 orderedList(
-  listItem("First, ", "still first")
-  listItem("Second, with indented list: ", orderedList("Hi!", "Hello!"))
+  listItem('First, ', 'still first')
+  listItem('Second, with indented list: ', orderedList('Hi!', 'Hello!'))
 )
 ```
 > 1. First, still first
@@ -275,7 +275,7 @@ panel.warning(...content)
 A block node that can contain other block nodes to be promoted in a document. If calling `panel()` directly, the `type` argument must be either "info", "note", "tip" or "warning".
 
 ```javascript
-panel("info", "Some text", panel.warning("And they can be nested!"))
+panel('info', 'Some text', panel.warning('And they can be nested!'))
 ```
 > ![Panel example](https://i.imgur.com/hLWN1ol.png)
 
@@ -288,7 +288,7 @@ paragraph(...content)
 A block node that can contain inline nodes. Whenever any inline nodes are used where a block node is expected (such as directly in a `doc` node), they are implicitly wrapped in a `paragraph`.
 
 ```javascript
-doc(paragraph("The first paragraph"), paragraph("The ", "second ", "paragraph"))
+doc(paragraph('The first paragraph'), paragraph('The ', 'second ', 'paragraph'))
 ```
 > The first paragraph
 >
@@ -303,7 +303,7 @@ rule()
 A block node that represents a horizontal divider in the document.
 
 ```javascript
-doc("The first section", rule(), "The second section")
+doc('The first section', rule(), 'The second section')
 ```
 > The first section
 >
@@ -324,9 +324,9 @@ A block node for creating tables. The `table` node can only contain `tableRow` n
 
 ```javascript
 table(
-  tableRow(tableHeader("First header"), tableHeader("Second header")),
-  tableRow(tableCell("First cell"), tableCell("Second cell")),
-  tableRow("First text", "Second text")
+  tableRow(tableHeader('First header'), tableHeader('Second header')),
+  tableRow(tableCell('First cell'), tableCell('Second cell')),
+  tableRow('First text', 'Second text')
 )
 ```
 > | First header | Second header |
@@ -344,9 +344,9 @@ text(textContent)
 An inline node representing raw text. You should never need to use this directly, as `atlas-doc` will implicitly wrap a plain string in a `text` node where necessary.
 
 ```javascript
-doc(text("Hello there"))
+doc(text('Hello there'))
 // equivalent to
-doc("Hello there")
+doc('Hello there')
 ```
 > Hello there
 
@@ -355,7 +355,7 @@ doc("Hello there")
 code(textContent)
 ```
 ```javascript
-code("var x = 1;")
+code('var x = 1;')
 ```
 > `var x = 1;`
 
@@ -365,7 +365,7 @@ code("var x = 1;")
 emphasis(textContent)
 ```
 ```javascript
-emphasis("wow")
+emphasis('wow')
 ```
 > *wow*
 
@@ -375,7 +375,7 @@ emphasis("wow")
 link(textContent, url)
 ```
 ```javascript
-link("Click here", "http://example.com")
+link('Click here', 'http://example.com')
 ```
 > [Click here](http://example.com)
 
@@ -385,7 +385,7 @@ link("Click here", "http://example.com")
 strike(textContent)
 ```
 ```javascript
-strike("wrong")
+strike('wrong')
 ```
 > ~~wrong~~
 
@@ -395,7 +395,7 @@ strike("wrong")
 strong(textContent)
 ```
 ```javascript
-strong("important")
+strong('important')
 ```
 > **important**
 
@@ -405,7 +405,7 @@ strong("important")
 subscript(textContent)
 ```
 ```javascript
-subscript("down here")
+subscript('down here')
 ```
 > <sub>down here</sub>
 
@@ -415,7 +415,7 @@ subscript("down here")
 superscript(textContent)
 ```
 ```javascript
-superscript("up here")
+superscript('up here')
 ```
 > <sup>up here</sup>
 
@@ -424,7 +424,7 @@ superscript("up here")
 textColor(textContent, color)
 ```
 ```javascript
-textColor("colorful", "#cc00ee")
+textColor('colorful', '#cc00ee')
 ```
 > ![Text color example](https://i.imgur.com/8n9YOd2.png)
 
@@ -434,7 +434,7 @@ textColor("colorful", "#cc00ee")
 underline(textContent)
 ```
 ```javascript
-underline("underlined")
+underline('underlined')
 ```
 > ![Underline example](https://i.imgur.com/MkcsRtg.png)
 
