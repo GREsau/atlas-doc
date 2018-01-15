@@ -110,6 +110,7 @@ A block node that can only contain unmarked text nodes. To specify the language,
 
 ```javascript
 codeBlock("javascript", "var x = 1\n", "alert(x)")
+// or
 codeBlock.javascript("var x = 1\n", "alert(x)")
 ```
 > ```javascript
@@ -120,6 +121,7 @@ If you don't want to specify a language (i.e. you just want monospaced text with
 
 ```javascript
 codeBlock(null, "This will be monospaced")
+// or
 codeBlock.plain("This will be monospaced")
 ```
 > ```
@@ -173,7 +175,7 @@ h5(...content)
 h6(...content)
 ```
 
-A block node that can only contain text nodes. `level` must be an integer between 1 and 6, where 1 is the largest heading and 6 is the smallest.
+A block node that can only contain `text` nodes. `level` must be an integer between 1 and 6, where 1 is the largest heading and 6 is the smallest.
 
 ```javascript
 doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubsubheading"), "Regular text")
@@ -183,7 +185,34 @@ doc(heading(1, "Title"), heading(2, "Subheading"), heading(4, "Subsubsubheading"
 > #### Subsubsubheading
 > Regular text
 
-## media / mediaGroup
+## media
+```javascript
+media(type, id, collection)
+media(id, collection)
+media.file(id, collection)
+media.link(id, collection)
+```
+
+A node used to embed a file or image that has been uploaded with the Stride Media API. For more information on uploading files to Stride, see the [Sending Media guide](https://developer.atlassian.com/cloud/stride/learning/sending-media/) from Atlassian.
+
+If the `type` argument is given, it must be either "link" or "file" - if omitted, it defaults to "file".
+
+Normally in Atlassian document format, a `media` node can only occur in a `mediaGroup`, but `atlas-doc`, will implicitly wrap `media` in a `mediaGroup` when necessary.
+
+```javascript
+doc(media("file-id", "conversation-id"))
+```
+
+## mediaGroup
+```javascript
+mediaGroup(...content)
+```
+
+A block node that can only contain `media` nodes. You'd rarely need to use this directly, unless you want to explicitly group multiple `media` nodes together/separately.
+
+```javascript
+doc(mediaGroup(media("file-1a", "conversation"), media("file-1b", "conversation")), media("file-2", "conversation"))
+```
 
 ## mention
 
