@@ -2,7 +2,7 @@ language: node_js
 node_js:
   - "node"
   - "lts/*"
-  - "4"
+  - "lts/argon"
 cache:
   directories:
     - node_modules
@@ -14,3 +14,8 @@ script:
   - npm run compile
 after_success:
   - ./node_modules/.bin/codecov -f coverage/coverage-final.json
+jobs:
+  include:
+    - stage: dummy stage
+      node_js: "lts/*"
+      script: echo "Hello from dummy stage!"
