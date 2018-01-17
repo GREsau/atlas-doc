@@ -22,12 +22,12 @@ jobs:
     - stage: release
       node_js: lts/*
       script:
-      - npm version --no-git-tag-version --allow-same-version from-git
-      - npm run compile && npm pack
+        - npm version --no-git-tag-version --allow-same-version $TRAVIS_TAG
+        - npm run compile && npm pack
       deploy:
-      - provider: releases
-        api_key:
-          secure: NVlZS2iTQlylmC+vFGAOAN87gCiIHcr8i1WUVd7e1l4QLpkCbYBI+poZhdsJBI7Q69dEftOVgUFNal+jHvKwlY97ibHjZzeQ0OZ66IfEa1CqF3I6r2V2JL3+PCdNCvZTsYy5w2B0malgO+MeZ8eU3/bmKT9fQQ/T7wTzJzmVLl+csmC5GG9f8QLeIkRBQ1DsS0XN31AA/4z8U4uyBJGGWy2YiF5cplBPrUZfmGRaXdN5vMJOtTPVc80gjw5akXJMer/dYCB1oUCcSz/E5y38Frugpb0V7tVln8CkYaB92lwVECfby09BltKDW6iOmCA2vuMmXDkqZDAnqmzI9egQWRXhGaINRfrGDurDaSj4n0RcMIcF4i3Mh1JSpHfsiEzVOXQ4rOtZllPOqyxj0aF116L3PxOQTzpSpZ6olvQTeGYwYtj9LScpdA+wx/XG9FP3HGqwfJc1rAg1SPYdc1JiYal77nRDBs9z6djeNPFP5iAHXSdc7vMygP4F+2Aq7qwuWswH++9jx4jaHpB/lcoLVnk0xNejmjwvLKxMwdgGxXbicyUsTblpfcXvjtOA5MALAq+FFwMWqHoJZ90/qlgAvDdU/D/AdIj1LETPosEhEsRpmXrhMcaRYrOE3rduY7fTJl+Fy20y8ETop2n0xxRJqE6ey3Mqcivj9GdDCcZ8FUg=
-        file: atlas-doc-*.tgz
-        file_glob: true
-        skip_cleanup: true
+        - provider: releases
+          api_key:
+            secure: NVlZS2iTQlylmC+vFGAOAN87gCiIHcr8i1WUVd7e1l4QLpkCbYBI+poZhdsJBI7Q69dEftOVgUFNal+jHvKwlY97ibHjZzeQ0OZ66IfEa1CqF3I6r2V2JL3+PCdNCvZTsYy5w2B0malgO+MeZ8eU3/bmKT9fQQ/T7wTzJzmVLl+csmC5GG9f8QLeIkRBQ1DsS0XN31AA/4z8U4uyBJGGWy2YiF5cplBPrUZfmGRaXdN5vMJOtTPVc80gjw5akXJMer/dYCB1oUCcSz/E5y38Frugpb0V7tVln8CkYaB92lwVECfby09BltKDW6iOmCA2vuMmXDkqZDAnqmzI9egQWRXhGaINRfrGDurDaSj4n0RcMIcF4i3Mh1JSpHfsiEzVOXQ4rOtZllPOqyxj0aF116L3PxOQTzpSpZ6olvQTeGYwYtj9LScpdA+wx/XG9FP3HGqwfJc1rAg1SPYdc1JiYal77nRDBs9z6djeNPFP5iAHXSdc7vMygP4F+2Aq7qwuWswH++9jx4jaHpB/lcoLVnk0xNejmjwvLKxMwdgGxXbicyUsTblpfcXvjtOA5MALAq+FFwMWqHoJZ90/qlgAvDdU/D/AdIj1LETPosEhEsRpmXrhMcaRYrOE3rduY7fTJl+Fy20y8ETop2n0xxRJqE6ey3Mqcivj9GdDCcZ8FUg=
+          file: atlas-doc-*.tgz
+          file_glob: true
+          skip_cleanup: true
