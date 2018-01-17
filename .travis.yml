@@ -21,11 +21,11 @@ jobs:
   include:
     - stage: release
       node_js: lts/*
-      before_install: skip
+      before_install: true
       script:
         - npm version --no-git-tag-version --allow-same-version $TRAVIS_TAG
         - npm run compile && npm pack
-      after_success: skip
+      after_success: true
       deploy:
         - provider: releases
           api_key:
