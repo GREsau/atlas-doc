@@ -21,9 +21,11 @@ jobs:
   include:
     - stage: release
       node_js: lts/*
+      before_install: skip
       script:
         - npm version --no-git-tag-version --allow-same-version $TRAVIS_TAG
         - npm run compile && npm pack
+      after_success: skip
       deploy:
         - provider: releases
           api_key:
@@ -31,3 +33,5 @@ jobs:
           file: atlas-doc-*.tgz
           file_glob: true
           skip_cleanup: true
+          on:
+            tags: true
