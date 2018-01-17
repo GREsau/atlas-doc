@@ -2,20 +2,21 @@ language: node_js
 cache:
   directories:
     - node_modules
+node_js:
+  - node
+  - lts/*
+  - lts/argon
+before_install:
+  - npm i -g npm@">=5.6.0"
+script:
+  - npm run lint
+  - npm run coverage
+after_success:
+  - ./node_modules/.bin/codecov -f coverage/coverage-final.json
 jobs:
   include:
-    - stage: test
-      node_js:
-        - node
-        - lts/*
-        - lts/argon
-      before_install:
-        - npm i -g npm@">=5.6.0"
-      script:
-        - npm run lint
-        - npm run coverage
-      after_success:
-        - ./node_modules/.bin/codecov -f coverage/coverage-final.json
     - stage: dummy stage
-      node_js: "lts/*"
+      node_js: lts/*
+      before_install: skip
       script: echo "Hello from dummy stage!"
+      after_success: skip
