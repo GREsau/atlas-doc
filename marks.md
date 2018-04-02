@@ -17,6 +17,15 @@ code('var x = 1;')
 ```
 > `var x = 1;`
 
+## color
+```javascript
+color(textContent, color)
+```
+```javascript
+color('colorful', '#cc00ee')
+```
+> ![Text color example](https://i.imgur.com/8n9YOd2.png)
+
 ## emphasis
 *aliases: `em` or `i`*
 ```javascript
@@ -76,15 +85,6 @@ superscript(textContent)
 superscript('up here')
 ```
 > <sup>up here</sup>
-
-## textColor
-```javascript
-textColor(textContent, color)
-```
-```javascript
-textColor('colorful', '#cc00ee')
-```
-> ![Text color example](https://i.imgur.com/8n9YOd2.png)
 
 ## underline
 *alias: `u`*
