@@ -6,11 +6,6 @@ export class DocFormatError extends Error {
 
 export function a(content: any, url: string): any;
 
-export function action(isDone: boolean, ...content: any[]): any;
-export function action(...content: any[]): any;
-
-export function actionList(...items: any[]): any;
-
 export function b(content: any): any;
 
 export function blockquote(...content: any[]): any;

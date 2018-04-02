@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { taskList, actionList, taskItem, strong, paragraph, doc, DocFormatError } from '../src/index'
+import { taskList, taskItem, strong, paragraph, doc, DocFormatError } from '../src/index'
 
 function ignoreIdAttrs (list) {
   delete list.attrs.localId
@@ -70,17 +70,6 @@ test('Task List # Has unique ID', t => {
   t.ok(typeof first.attrs.localId === 'string')
   t.ok(typeof second.attrs.localId === 'string')
   t.notEqual(first.attrs.localId, second.attrs.localId)
-  t.end()
-})
-
-test('Task List # Has actionList alias', t => {
-  const alias = actionList('text')
-  ignoreIdAttrs(alias)
-
-  const expected = taskList('text')
-  ignoreIdAttrs(expected)
-
-  t.deepEqual(alias, expected)
   t.end()
 })
 
