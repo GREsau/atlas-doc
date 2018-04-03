@@ -96,9 +96,6 @@ export function tableHeader(...content: any[]): any;
 
 export function tableRow(...cells: any[]): any;
 
-export function task(isDone: boolean, ...content: any[]): any;
-export function task(...content: any[]): any;
-
 export function taskItem(isDone: boolean, ...content: any[]): any;
 export function taskItem(...content: any[]): any;
 
