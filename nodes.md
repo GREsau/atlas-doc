@@ -4,7 +4,7 @@ There are two main types of nodes: block nodes (e.g. `paragraph`) and inline nod
 
 **Block nodes** can be used directly in a `doc`, and can also contain other nodes or specific types. 
 
-Normally in Atlassian document format, an **inline node** cannot be used directly in a `doc` But you can in `atlas-doc`, as it will implicitly wrap inline nodes in a `paragraph` whenever they're used where a block node expected.
+Normally in Atlassian document format, an **inline node** cannot be used directly in a `doc`. But this works in `atlas-doc`, as it will implicitly wrap inline nodes in a `paragraph` whenever they're used where a block node expected.
 
 ## applicationCard
 Not yet supported by `atlas-doc`, sorry!
@@ -149,7 +149,7 @@ A node used to embed a file or image that has been uploaded with the Stride Medi
 
 If the `type` argument is given, it must be either "link" or "file" - if omitted, it defaults to "file".
 
-Normally in Atlassian document format, a `media` node can only occur in a `mediaGroup`, but `atlas-doc`, will implicitly wrap `media` in a `mediaGroup` when necessary.
+Normally in Atlassian document format, a `media` node can only occur in a `mediaGroup`, but `atlas-doc` will implicitly wrap `media` in a `mediaGroup` when necessary.
 
 ```javascript
 doc(media('file-id', 'conversation-id'))
@@ -272,7 +272,7 @@ tableHeader(...content)
 tableCell(...content)
 ```
 
-A block node for creating tables. The `table` node can only contain `tableRow` nodes. Normally in Atlassian document format, a `tableRow` node can only contain `tableHeader` or `tableCell` nodes, but `atlas-doc` will implicitly wrap other content in a `tableCell` when it occurs directly in a `tableRow`. A `tableHeader` or `tableCell` node can contain block nodes.
+Nodes for creating tables. The `table` block node can only contain `tableRow` nodes. Normally in Atlassian document format, a `tableRow` node can only contain `tableHeader` or `tableCell` nodes, but `atlas-doc` will implicitly wrap other content in a `tableCell` when it occurs directly in a `tableRow`. A `tableHeader` or `tableCell` node can contain block nodes.
 
 ```javascript
 table(
@@ -287,7 +287,21 @@ table(
 > | First text   | Second text   |
 
 ## taskItem / taskList
-Not yet supported by `atlas-doc`, sorry!
+```javascript
+taskItem(isDone, ...content)
+taskItem(...content)
+taskList(...items)
+```
+Nodes for creating tasks, also called "actions" in the Stride application. Normally in Atlassian document format, the `taskList` block node can only contain `taskItem` nodes, but `atlas-doc` will implicitly wrap other content in a `taskItem` when it occurs directly in a `taskList`. `atlas-doc` will also implicitly wrap `taskItem`s in a `taskList` when necessary.
+
+You can create a task that is already complete with the `isDone` parameter, which defaults to false. A `taskItem` can contain one or more inline nodes.
+
+```javascript
+doc(taskList(taskItem(true, 'Already done!'), 'Do this', 'And this'))
+// equivalent to
+doc(taskItem(true, 'Already done!'), taskItem(false, 'Do this'), taskItem('And this'))
+```
+> ![taskItem example](https://i.imgur.com/KJf1dRT.png)
 
 ## text
 ```javascript
