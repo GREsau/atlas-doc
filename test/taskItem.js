@@ -1,5 +1,5 @@
 import test from 'tape-catch'
-import { taskItem, task, strong, paragraph, DocFormatError } from '../src/index'
+import { taskItem, strong, paragraph, DocFormatError } from '../src/index'
 
 function ignoreIdAttr (item) {
   delete item.attrs.localId
@@ -84,17 +84,6 @@ test('Task Item # Can set to DONE', t => {
   }
 
   t.deepEqual(actual, expected)
-  t.end()
-})
-
-test('Task Item # Has task aliases', t => {
-  const taskAlias = task('text')
-  ignoreIdAttr(taskAlias)
-
-  const expected = taskItem('text')
-  ignoreIdAttr(expected)
-
-  t.deepEqual(taskAlias, expected)
   t.end()
 })
 
