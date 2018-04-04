@@ -80,7 +80,21 @@ codeBlock.plain('This will be monospaced')
 > This will be monospaced
 
 ## decisionItem / decisionList
-Not yet supported by `atlas-doc`, sorry!
+```javascript
+decisionItem(isDecided, ...content)
+decisionItem(...content)
+decisionList(...items)
+```
+Nodes for creating decisions. Normally in Atlassian document format, the `decisionList` block node can only contain `decisionItem` nodes, but `atlas-doc` will implicitly wrap other content in a `decisionItem` when it occurs directly in a `decisionList`. `atlas-doc` will also implicitly wrap `decisionItem`s in a `decisionList` when necessary.
+
+You can create a task that is already complete with the `isDecided` parameter, which defaults to false. At time of writing, the decided state of a decision doesn't appear to have any effect on how it's presented in the Stride application. A `decisionItem` can contain one or more inline nodes.
+
+```javascript
+doc(decisionList(decisionItem(true, 'We decided!'), 'What about...?', 'And...?'))
+// equivalent to
+doc(decisionItem(true, 'We decided!'), decisionItem(false, 'What about...?'), decisionItem('And...?'))
+```
+> ![decisionItem example](https://i.imgur.com/z1p8RxN.png)
 
 ## emoji
 ```javascript
