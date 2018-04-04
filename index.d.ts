@@ -23,6 +23,8 @@ export function color(content: any, color: string): any;
 export function decisionItem(isDecided: boolean, ...content: any[]): any;
 export function decisionItem(...content: any[]): any;
 
+export function decisionList(...items: any[]): any;
+
 export function doc(...content: any[]): any;
 
 export function em(content: any): any;
