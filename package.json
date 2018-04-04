@@ -17,8 +17,7 @@
     "coverage": "cross-env BABEL_ENV=coverage nyc --reporter=html --reporter=json --reporter=text npm test",
     "clean": "rimraf dist/*",
     "compile": "babel src --out-dir dist",
-    "build": "npm run lint && npm test && npm run clean && npm run compile",
-    "prepublishOnly": "npm run build"
+    "build": "npm run lint && npm test && npm run clean && npm run compile"
   },
   "author": "Graham Esau",
   "license": "ISC",
